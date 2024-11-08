@@ -1,0 +1,20 @@
+# Dockerfile.dev
+
+# Use Node.js image (choose the appropriate version)
+FROM node:18-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy all source code (for production, this step would usually exclude dev files)
+COPY . .
+
+# Expose the port your app runs on (adjust as necessary)
+EXPOSE 3000
+
+# Run the application in development mode (adjust to match your dev script)
+CMD ["npm", "run", "start:dev"]
