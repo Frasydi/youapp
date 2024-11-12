@@ -5,8 +5,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      MONGO_URI: mongodb://mongo:27017/nest-db
-      REDIS_URL: redis://redis:6379
+      MONGO_URI: mongodb://mongo:27017/youapp
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SECRET_KEY: 321313131312312312dasda323d
     depends_on:
       - mongo
       - redis
@@ -16,7 +18,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - ./mongo-data:/data/db
 
   redis:
     image: redis/redis-stack-server:latest

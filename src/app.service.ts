@@ -1,6 +1,6 @@
 import { BadRequestException, ConflictException, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { isValidObjectId, Model } from 'mongoose';
+import { Model } from 'mongoose';
 import { UserRegisterDto } from './user/dto/user-register.dto';
 import { UserLoginDto } from './user/dto/user-login.dto';
 import { User, UserDocument } from './schemas/user.schema';
@@ -9,15 +9,16 @@ import { JwtService } from '@nestjs/jwt';
 import { MongoServerError } from 'mongodb';
 import { UserDto } from './user/dto/user.dto';
 import * as redis from 'redis';
-import { RedisClientType } from '@redis/client';
 @Injectable()
 export class AppService {
-  private redisClient: RedisClientType;
+  private redisClient : ReturnType<typeof redis.createClient>;
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private jwtService: JwtService
   ) {
-   this.redisClient = redis.createClient();
+    this.redisClient = redis.createClient({
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
+    });
    this.redisClient.connect()
   }
 
