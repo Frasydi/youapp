@@ -1,22 +1,23 @@
 
-## Description
+# Description
 
 This is [YouApp] Backend
 
-## Project setup
+# Project setup
 
 ```bash
 $ npm install
 $ docker-compose up -d
 ```
 
-## For Testing
+# For Testing
 
 ```bash
 $ npm run test
 ```
 
-## Project Structure
+# Project Structure
+```bash
 .dockerignore
 .env
 .eslintrc.js
@@ -69,8 +70,8 @@ src/
 tsconfig.build.json
 tsconfig.json
 uploads/
-
-## Environment Variables
+```
+# Environment Variables
 Create a '.env' file in the root directory and add the following environment variables:
 
 ```
@@ -79,9 +80,9 @@ REDIS_URL=redis://redis:6379
 SECRET_KEY=your_secret_key
 ```
 
-## Docker
+# Docker
 
-# Build Docker Image
+## Build Docker Image
 
 ```bash
 $ docker build -t youapp .
@@ -91,28 +92,28 @@ $ docker build -t youapp .
 $ docker-compose up -d
 ```
 
-## API Documentation
+# API Documentation
 The API documentation is available at /api-docs once the application is running.
 
-## Running the Application
-# Development
+# Running the Application
+## Development
 
 ```bash 
 $ npm run start:dev
 ```
-# Production
+## Production
 ```bash
 $ npm run build
 $ npm run start:prod
 ```
 
-## Testing
-# Unit Tests
+# Testing
+## Unit Tests
 ```bash
 $ npm run test
 ```
 
-## Key Files and Directories
+# Key Files and Directories
 
 - main.ts: Entry point of the application.
 - app.module.ts: Main application module.
@@ -126,7 +127,7 @@ $ npm run test
 - utils: Utility functions for file handling.
 - types: Custom types and decorators.
 
-## WebSocket
+# WebSocket
 The WebSocket server runs on port 3050. The ChatGateway handles WebSocket connections and events.
 
 ## Example Socket
